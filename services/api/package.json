@@ -1,0 +1,14 @@
+{
+  "name": "kleiderschrank",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "iPhone-optimierte Social-Closet-App mit Wetter- und Outfit-Empfehlungen.",
+  "engines": {
+    "node": ">=22.22.0 <25"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs && node --check public/app.js && node --check public/sw.js"
+  }
+}

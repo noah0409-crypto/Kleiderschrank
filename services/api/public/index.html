@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#f3f4f6" />
+    <title>Kleiderschrank</title>
+    <link rel="manifest" href="/app.webmanifest" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="mobile-header" id="mobile-header">
+        <div>
+          <p class="eyebrow">Kleiderschrank</p>
+          <h1>Style Feed</h1>
+        </div>
+        <div class="header-user" id="header-user"></div>
+      </header>
+
+      <main class="app-main">
+        <section class="auth-wrap" id="auth-section">
+          <article class="panel auth-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Login</p>
+                <h2>Deine Outfit-App</h2>
+              </div>
+            </div>
+            <p class="microcopy">
+              Mobil gedacht, wie eine kleine Social-Fashion-App: Kleidung fotografieren, Looks speichern und Outfits mit anderen teilen.
+            </p>
+            <div class="auth-grid">
+              <form id="signup-form" class="stack-form">
+                <label>
+                  Anzeigename
+                  <input type="text" id="signup-display-name" placeholder="Noah" required />
+                </label>
+                <label>
+                  Benutzername
+                  <input type="text" id="signup-username" placeholder="noahstyle" required />
+                </label>
+                <label>
+                  Passwort
+                  <input type="password" id="signup-password" minlength="6" placeholder="mindestens 6 Zeichen" required />
+                </label>
+                <button type="submit">Account erstellen</button>
+              </form>
+              <form id="login-form" class="stack-form">
+                <label>
+                  Benutzername
+                  <input type="text" id="login-username" placeholder="noahstyle" required />
+                </label>
+                <label>
+                  Passwort
+                  <input type="password" id="login-password" required />
+                </label>
+                <button type="submit">Einloggen</button>
+              </form>
+            </div>
+            <p id="auth-message" class="microcopy"></p>
+          </article>
+        </section>
+
+        <section class="app-wrap hidden" id="app-content">
+          <section class="tab-panel is-active" data-panel="home">
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Heute</p>
+                  <h2>Dein Look fuer jetzt</h2>
+                </div>
+                <button class="secondary compact-button" id="install-tip-button" type="button">Als App</button>
+              </div>
+              <div class="weather-card" id="weather-card">
+                <p class="weather-label">Wetter</p>
+                <strong>Noch kein Wetter geladen</strong>
+                <p class="microcopy">Nutze deinen Standort fuer einen passenden Outfit-Vorschlag.</p>
+              </div>
+              <div class="action-row">
+                <button id="weather-button" type="button">Wetter abrufen</button>
+              </div>
+              <div class="help-card" id="mobile-help"></div>
+            </article>
+
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Empfehlung</p>
+                  <h2>Smartes Outfit</h2>
+                </div>
+              </div>
+              <form id="generator-form" class="stack-form">
+                <div class="grid-two">
+                  <label>
+                    Anlass
+                    <select id="occasion-filter">
+                      <option value="Alltag">Alltag</option>
+                      <option value="Office">Office</option>
+                      <option value="Date">Date</option>
+                      <option value="Sport">Sport</option>
+                      <option value="Party">Party</option>
+                    </select>
+                  </label>
+                  <label>
+                    Stil
+                    <select id="vibe-filter">
+                      <option value="clean">Clean</option>
+                      <option value="bold">Bold</option>
+                      <option value="cozy">Cozy</option>
+                      <option value="polished">Polished</option>
+                    </select>
+                  </label>
+                  <label>
+                    Temperatur manuell
+                    <input type="number" id="manual-temperature-input" placeholder="z. B. 18" />
+                  </label>
+                </div>
+                <button type="submit">Outfit vorschlagen</button>
+              </form>
+              <div id="recommendation-empty" class="empty-state">Noch kein Outfit generiert.</div>
+              <div id="recommendation-card" class="recommendation hidden">
+                <div class="recommendation-header">
+                  <div>
+                    <p class="eyebrow">Look</p>
+                    <h3 id="recommendation-title"></h3>
+                  </div>
+                  <span class="badge" id="recommendation-badge"></span>
+                </div>
+                <p id="recommendation-reason" class="microcopy"></p>
+                <div id="recommendation-items" class="card-grid"></div>
+                <form id="save-outfit-form" class="stack-form slim">
+                  <input type="text" id="outfit-name" placeholder="Name fuer dieses Outfit" required />
+                  <textarea id="outfit-caption" rows="3" placeholder="Beschreibung oder Styling-Notiz"></textarea>
+                  <button type="submit">Outfit speichern</button>
+                </form>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Discover</p>
+                  <h2>Profile entdecken</h2>
+                </div>
+              </div>
+              <div id="featured-profiles" class="story-rail"></div>
+            </article>
+
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Feed</p>
+                  <h2>Geteilte Outfits</h2>
+                </div>
+              </div>
+              <div id="shared-feed" class="stack-list"></div>
+            </article>
+          </section>
+
+          <section class="tab-panel" data-panel="create">
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Kamera</p>
+                  <h2>Bild aufnehmen</h2>
+                </div>
+              </div>
+              <div class="camera-shell">
+                <div class="camera-stage" id="camera-stage">
+                  <video id="camera-video" autoplay playsinline muted class="hidden"></video>
+                  <img id="camera-preview" class="hidden" alt="Vorschau" />
+                  <div id="camera-placeholder" class="camera-placeholder">
+                    <strong>Bereit fuer dein Kleidungsfoto</strong>
+                    <p>Oeffne die Kamera oder waehle ein Bild aus deiner Galerie.</p>
+                  </div>
+                </div>
+                <canvas id="camera-canvas" class="hidden"></canvas>
+                <div class="action-grid">
+                  <button id="camera-open-button" type="button">Kamera oeffnen</button>
+                  <button id="camera-capture-button" class="secondary" type="button">Foto machen</button>
+                  <button id="camera-reset-button" class="secondary" type="button">Zuruecksetzen</button>
+                </div>
+                <label class="file-picker">
+                  <span>Foto oder Galerie waehlen</span>
+                  <input type="file" id="image-input" accept="image/*" capture="environment" />
+                </label>
+                <p id="camera-status" class="microcopy">Noch kein Bild ausgewaehlt.</p>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Upload</p>
+                  <h2>Kleidungsstueck anlegen</h2>
+                </div>
+              </div>
+              <form id="clothing-form" class="stack-form">
+                <label>
+                  Name
+                  <input type="text" id="name-input" placeholder="Grauer Oversize Hoodie" required />
+                </label>
+                <div class="grid-two">
+                  <label>
+                    Kategorie
+                    <select id="category-input">
+                      <option>Top</option>
+                      <option>Bottom</option>
+                      <option>Outerwear</option>
+                      <option>Shoes</option>
+                      <option>Accessory</option>
+                      <option>Dress</option>
+                    </select>
+                  </label>
+                  <label>
+                    Farbe
+                    <input type="text" id="color-input" placeholder="Grau" />
+                  </label>
+                </div>
+                <label>
+                  Jahreszeiten
+                  <div class="chip-row">
+                    <label class="chip"><input type="checkbox" value="Fruehling" name="season" />Fruehling</label>
+                    <label class="chip"><input type="checkbox" value="Sommer" name="season" />Sommer</label>
+                    <label class="chip"><input type="checkbox" value="Herbst" name="season" />Herbst</label>
+                    <label class="chip"><input type="checkbox" value="Winter" name="season" />Winter</label>
+                  </div>
+                </label>
+                <label>
+                  Temperaturbereich
+                  <select id="temperature-input">
+                    <option value="cold">Kalt unter 10 Grad</option>
+                    <option value="mild">Mild 10 bis 20 Grad</option>
+                    <option value="warm">Warm ueber 20 Grad</option>
+                    <option value="all">Alles</option>
+                  </select>
+                </label>
+                <label>
+                  Anlass
+                  <div class="chip-row">
+                    <label class="chip"><input type="checkbox" value="Alltag" name="occasion" />Alltag</label>
+                    <label class="chip"><input type="checkbox" value="Office" name="occasion" />Office</label>
+                    <label class="chip"><input type="checkbox" value="Date" name="occasion" />Date</label>
+                    <label class="chip"><input type="checkbox" value="Sport" name="occasion" />Sport</label>
+                    <label class="chip"><input type="checkbox" value="Party" name="occasion" />Party</label>
+                  </div>
+                </label>
+                <label>
+                  Stil
+                  <div class="chip-row">
+                    <label class="chip"><input type="checkbox" value="minimal" name="style" />Minimal</label>
+                    <label class="chip"><input type="checkbox" value="streetwear" name="style" />Streetwear</label>
+                    <label class="chip"><input type="checkbox" value="tailored" name="style" />Tailored</label>
+                    <label class="chip"><input type="checkbox" value="elevated" name="style" />Elevated</label>
+                    <label class="chip"><input type="checkbox" value="cozy" name="style" />Cozy</label>
+                    <label class="chip"><input type="checkbox" value="bold" name="style" />Bold</label>
+                    <label class="chip"><input type="checkbox" value="sporty" name="style" />Sporty</label>
+                    <label class="chip"><input type="checkbox" value="romantic" name="style" />Romantic</label>
+                  </div>
+                </label>
+                <button type="submit">Kleidungsstueck speichern</button>
+              </form>
+            </article>
+          </section>
+
+          <section class="tab-panel" data-panel="closet">
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Saved</p>
+                  <h2>Deine Outfits</h2>
+                </div>
+              </div>
+              <div id="saved-outfits" class="stack-list"></div>
+            </article>
+
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Wardrobe</p>
+                  <h2>Dein Schrank</h2>
+                </div>
+              </div>
+              <div id="wardrobe-grid" class="card-grid"></div>
+            </article>
+          </section>
+
+          <section class="tab-panel" data-panel="profile">
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Du</p>
+                  <h2>Profil bearbeiten</h2>
+                </div>
+                <button id="logout-button" class="secondary compact-button" type="button">Logout</button>
+              </div>
+              <div id="account-card" class="account-card"></div>
+              <form id="profile-form" class="stack-form">
+                <label>
+                  Avatar
+                  <input type="file" id="profile-avatar-input" accept="image/*" capture="user" />
+                </label>
+                <label>
+                  Anzeigename
+                  <input type="text" id="profile-display-name" maxlength="40" placeholder="Dein Anzeigename" required />
+                </label>
+                <label>
+                  Bio
+                  <textarea id="profile-bio" rows="3" maxlength="220" placeholder="Dein Stil in ein paar Worten"></textarea>
+                </label>
+                <label class="toggle">
+                  <input type="checkbox" id="profile-avatar-clear" />
+                  <span>Avatar entfernen</span>
+                </label>
+                <button type="submit">Profil speichern</button>
+              </form>
+            </article>
+
+            <article class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Profilansicht</p>
+                  <h2>Ausgewaehltes Profil</h2>
+                </div>
+              </div>
+              <div id="public-profile-view" class="stack-list">
+                <div class="empty-state">Waehle oben im Feed oder bei den Profilen jemanden aus.</div>
+              </div>
+            </article>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav hidden" id="bottom-nav">
+        <button class="nav-button is-active" data-tab="home" type="button">Home</button>
+        <button class="nav-button" data-tab="create" type="button">Create</button>
+        <button class="nav-button" data-tab="closet" type="button">Schrank</button>
+        <button class="nav-button" data-tab="profile" type="button">Profil</button>
+      </nav>
+    </div>
+
+    <template id="wardrobe-item-template">
+      <article class="wardrobe-card">
+        <img alt="" />
+        <div class="wardrobe-content">
+          <div class="wardrobe-title-row">
+            <h3></h3>
+            <button class="ghost-button delete-button" type="button">Loeschen</button>
+          </div>
+          <p class="wardrobe-meta"></p>
+          <div class="tag-list"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

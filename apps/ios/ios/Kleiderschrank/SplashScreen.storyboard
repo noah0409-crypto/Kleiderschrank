@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-O4-id7">
+    <device id="retina6_6" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="Y6W-O4-id7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Eh-VU-TAp">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w7l-7T-kAV">
+                                <rect key="frame" x="90" y="432" width="248" height="62"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KLEIDERSCHRANK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZe-5P-vz8">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closet Studio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-My-WnO">
+                                        <rect key="frame" x="0.0" y="39" width="248" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                        <color key="textColor" red="0.74509803920000005" green="0.75686274510000003" blue="0.78039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c6e-qn-4Gw"/>
+                        <color key="backgroundColor" red="0.10196078429999999" green="0.11372549019999999" blue="0.12941176470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="w7l-7T-kAV" firstAttribute="centerX" secondItem="5Eh-VU-TAp" secondAttribute="centerX" id="1uS-Kq-xji"/>
+                            <constraint firstItem="w7l-7T-kAV" firstAttribute="centerY" secondItem="5Eh-VU-TAp" secondAttribute="centerY" id="MVT-Ut-CYr"/>
+                            <constraint firstItem="w7l-7T-kAV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c6e-qn-4Gw" secondAttribute="leading" constant="32" id="hsm-3T-7pk"/>
+                            <constraint firstItem="c6e-qn-4Gw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w7l-7T-kAV" secondAttribute="trailing" constant="32" id="lFT-y4-VJd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsS-dI-ifm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13.084112149532709" y="112.31182795698925"/>
+        </scene>
+    </scenes>
+</document>

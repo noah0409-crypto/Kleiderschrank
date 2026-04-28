@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+.expo/
+apps/ios/node_modules/
+apps/ios/.expo/
+services/api/data/closet-cloud.db
+services/api/data/closet-cloud.db-shm
+services/api/data/closet-cloud.db-wal
+services/api/data/uploads/
+DerivedData/
+build/
+*.ipa
+*.xcarchive
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/

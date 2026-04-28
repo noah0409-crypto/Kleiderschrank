@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Kleiderschrank",
+    "slug": "kleiderschrank-ios",
+    "scheme": "kleiderschrank",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#15171B"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.noahbartholoma.kleiderschrank"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Kleiderschrank moechte die Kamera nutzen, damit du Kleidung direkt fotografieren kannst.",
+          "photosPermission": "Kleiderschrank moechte auf deine Fotos zugreifen, damit du Kleidungsbilder hochladen kannst."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Kleiderschrank nutzt deinen Standort, um Wetter und Temperatur fuer passende Outfit-Vorschlaege abzurufen."
+        }
+      ]
+    ],
+    "extra": {
+      "apiUrl": "https://deine-app-api.onrender.com"
+    }
+  }
+}

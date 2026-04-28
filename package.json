@@ -1,0 +1,8 @@
+{
+  "name": "kleiderschrank-workspace",
+  "private": true,
+  "scripts": {
+    "api:start": "npm --prefix services/api start",
+    "api:check": "npm --prefix services/api run check"
+  }
+}

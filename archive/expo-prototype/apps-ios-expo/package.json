@@ -1,0 +1,21 @@
+{
+  "name": "kleiderschrank-ios",
+  "version": "1.0.0",
+  "private": true,
+  "main": "expo/AppEntry",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo run:ios",
+    "check": "node --check src/constants.js && node --check src/recommendation.js && node --check src/api.js && node -e \"require('@babel/core').transformFileSync('App.js', { configFile: './babel.config.js' }); console.log('ios-ui-ok')\"",
+    "android": "expo run:android"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.23.1",
+    "expo": "~51.0.28",
+    "expo-constants": "~16.0.2",
+    "expo-image-picker": "~15.0.7",
+    "expo-location": "~17.0.1",
+    "react": "18.2.0",
+    "react-native": "0.74.5"
+  }
+}
